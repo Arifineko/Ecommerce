@@ -15,7 +15,7 @@ const Product = ({ product, loadCart }) => {
         <div className="product-container">
             <div className="product-image-container">
                 <img className="product-image"
-                    data-testId='product-image'
+                    data-testid='product-image'
                     src={product.image} />
             </div>
 
@@ -25,7 +25,7 @@ const Product = ({ product, loadCart }) => {
 
             <div className="product-rating-container">
                 <img className="product-rating-stars"
-                    data-testId='product-rating-stars-image'
+                    data-testid='product-rating-stars-image'
                     src={`images/ratings/rating-${product.rating.stars * 10}.png`} />
                 <div className="product-rating-count link-primary">
                     {product.rating.count}
@@ -59,7 +59,7 @@ const Product = ({ product, loadCart }) => {
             </div>
 
             <button className="add-to-cart-button button-primary"
-                data-testId='add-to-cart-button'
+                data-testid='add-to-cart-button'
                 onClick={() => {
                     addToCart(product.id, quantity, loadCart)
                     setIsAdded(true)
