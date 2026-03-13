@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import { Header } from '../../components/Header';
 import './HomePage.css';
 import { ProductGrid } from './ProductsGrid';
