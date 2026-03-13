@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import formatMoney from '../../utils/money,'
+import formatMoney from '../../utils/money'
 import { addToCart } from '../../utils/addToCart'
 
 const Product = ({ product, loadCart }) => {
@@ -37,7 +37,7 @@ const Product = ({ product, loadCart }) => {
             </div>
 
             <div className="product-quantity-container">
-                <select value={quantity} onChange={handleQuantity}>
+                <select value={quantity} onChange={handleQuantity} data-testid='product-select-quantity'>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>

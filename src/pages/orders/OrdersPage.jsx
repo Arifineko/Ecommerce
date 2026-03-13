@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Header } from '../../components/Header';
 import './OrdersPage.css';
 import axios from 'axios';
-import formatMoney from '../../utils/money,';
+import formatMoney from '../../utils/money';
 import dayjs from 'dayjs';
 import { OrdersGrid } from './OrdersGrid';
 

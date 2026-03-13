@@ -1,5 +1,5 @@
 import dayjs from "dayjs"
-import formatMoney from "../../utils/money,"
+import formatMoney from "../../utils/money"
 import { DeliveryOptions } from "./DeliveryOptions"
 import axios from "axios"
 import { CartItemDetails } from "./CartItemDetails"

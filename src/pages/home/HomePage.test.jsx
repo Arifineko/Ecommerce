@@ -3,12 +3,14 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 import { HomePage } from "./HomePage";
 import axios from "axios";
 import { MemoryRouter } from "react-router";
+import userEvent from "@testing-library/user-event";
 
 vi.mock('axios')
 
 describe('HomePage component', () => {
 
     let loadCart;
+    let user;
 
     beforeEach(() => {
         loadCart = vi.fn()
@@ -43,6 +45,8 @@ describe('HomePage component', () => {
                 }
             }
         })
+
+        user = userEvent.setup()
     })
 
     it('display the product correct', async () => {
@@ -56,5 +60,28 @@ describe('HomePage component', () => {
 
         expect(productContainers.length).toBe(2)
         expect(within(productContainers[0]).getByText('Black and Gray Athletic Cotton Socks - 6 Pairs')).toBeInTheDocument()
+
+        const firstProduct = within(productContainers[0]).getByTestId('product-select-quantity')
+        const secondProduct = within(productContainers[1]).getByTestId('product-select-quantity')
+
+        await user.selectOptions(firstProduct, "2")
+        await user.selectOptions(secondProduct, "3")
+
+        await user.click(within(productContainers[0]).getByTestId('add-to-cart-button'))
+        await user.click(within(productContainers[1]).getByTestId('add-to-cart-button'))
+
+        expect(axios.post).toHaveBeenCalledWith('/api/cart-items',
+            {
+                productId: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
+                quantity: 2
+            }
+        )
+
+        expect(axios.post).toHaveBeenCalledWith('/api/cart-items',
+            {
+                productId: "15b6fc6f-327a-4ec4-896f-486349e85a3d",
+                quantity: 3
+            }
+        )
     })
 })
